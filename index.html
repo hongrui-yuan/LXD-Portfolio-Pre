@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serena Yuan | LXD Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --bg-soft: #eee7db;
+      --surface: #fbfaf7;
+      --text: #2f3a3d;
+      --muted: #61706a;
+      --line: #d8d6d0;
+      --sage: #a8b5a2;
+      --sage-deep: #7f9183;
+      --shadow: 0 10px 30px rgba(47, 58, 61, 0.08);
+      --radius: 20px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(to bottom, var(--bg) 0%, #f4f1ea 100%);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0.01em;
+      margin: 0;
+      color: var(--text);
+    }
+
+    p { margin: 0; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 244, 238, 0.86);
+      border-bottom: 1px solid rgba(216, 214, 208, 0.8);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .brand strong {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 0.58rem 0.9rem;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card {
+      background: rgba(251, 250, 247, 0.88);
+      border: 1px solid rgba(216, 214, 208, 0.85);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: fit-content;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      color: var(--sage-deep);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      line-height: 1.06;
+      max-width: 16ch;
+    }
+
+    .hero .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+
+    .meta-card {
+      padding: 1rem;
+      border-radius: 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .meta-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--sage-deep);
+      color: white;
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero-card {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+
+    .hero-card .preview {
+      min-height: 280px;
+      background: linear-gradient(135deg, rgba(168, 181, 162, 0.22), rgba(238, 231, 219, 0.92));
+      border: 1px dashed rgba(127, 145, 131, 0.4);
+      border-radius: 20px;
+      padding: 1.25rem;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .hero-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+    }
+
+    section {
+      padding: 2rem 0 0;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+    }
+
+    .section-header p {
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .context-grid,
+    .reflection-grid,
+    .artifact-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .context-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .card {
+      background: rgba(251, 250, 247, 0.88);
+      border: 1px solid rgba(216, 214, 208, 0.85);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .artifacts-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .artifact {
+      scroll-margin-top: 92px;
+    }
+
+    .artifact-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: start;
+    }
+
+    .artifact-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .artifact-copy h3 {
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      margin-bottom: 0.25rem;
+    }
+
+    .artifact-kicker {
+      color: var(--sage-deep);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .artifact-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .tag {
+      padding: 0.45rem 0.72rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .artifact-sections {
+      display: grid;
+      gap: 0.95rem;
+    }
+
+    .artifact-block {
+      padding: 1rem 1rem 1rem 1.1rem;
+      border-left: 3px solid var(--sage);
+      background: rgba(247, 244, 238, 0.72);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .artifact-block strong {
+      display: block;
+      margin-bottom: 0.28rem;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    .artifact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.15rem;
+    }
+
+    .artifact-media {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .artifact-preview {
+      position: relative;
+      min-height: 310px;
+      border-radius: 22px;
+      border: 1px solid rgba(216, 214, 208, 0.9);
+      background: linear-gradient(135deg, rgba(168, 181, 162, 0.18), rgba(238, 231, 219, 0.95));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .artifact-preview small {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .artifact-preview-dual {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 0.9rem;
+      min-height: auto;
+    }
+
+.artifact-preview-dual img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(216, 214, 208, 0.95);
+    background: #ffffff;
+    }
+
+    .callout {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: var(--bg-soft);
+      border: 1px solid rgba(127, 145, 131, 0.18);
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .callout p { color: var(--muted); }
+
+    .placeholder-note {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      border: 1px dashed rgba(127, 145, 131, 0.45);
+      color: var(--muted);
+      background: rgba(238, 231, 219, 0.45);
+    }
+
+    .competency-table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: rgba(251, 250, 247, 0.88);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 0.94rem;
+    }
+
+    th {
+      background: var(--bg-soft);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    td { color: var(--muted); }
+    
+    .competency-growth-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.25rem;
+}
+
+.competency-card-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 980px) {
+  .competency-growth-grid,
+  .competency-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    .reflection-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer {
+      padding: 3rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--sage-deep);
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .context-grid,
+      .artifact-grid,
+      .reflection-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-wrap {
+        align-items: flex-start;
+        padding: 0.85rem 0;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 4.3rem;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .card {
+        padding: 1.2rem;
+        border-radius: 20px;
+      }
+
+      .artifact-preview {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <strong>Serena Yuan</strong>
+        <span>LXD Portfolio · FFMI Residency</span>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#context">Context</a>
+        <a href="#artifacts">Artifacts</a>
+        <a href="#additional">Additional Work</a>
+        <a href="#competencies">Competency Map</a>
+        <a href="#reflection">Reflection</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">LXD Residency Portfolio</span>
+          <h1>From Review to Design at FFMI</h1>
+          <p class="lead">
+            This portfolio showcases my work as an LXD Resident at Fast Forward Medical Innovation (FFMI). Across course review, gap analysis, external research, and the development of learner-facing tools, my residency gradually moved from identifying design issues to building clearer instructional supports within Canvas-based commercialization education.
+          </p>
+          <div class="hero-meta">
+            <div class="meta-card">
+              <strong>Primary context</strong>
+              <span>FFMI commercialization education and fastPACE-related Canvas work</span>
+            </div>
+            <div class="meta-card">
+              <strong>My role</strong>
+              <span>Course review, gap analysis, external research, and learner-facing tools and templates</span>
+            </div>
+            <div class="meta-card">
+              <strong>Portfolio focus</strong>
+              <span>Selected artifacts, reflections, and growth across LXD competencies</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#artifacts">View featured artifacts</a>
+            <a class="btn btn-secondary" href="#competencies">See competency map</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div>
+            <h3>How this site is organized</h3>
+            <p>
+              The portfolio is structured around featured artifacts from my residency work, followed by a section reserved for additional EDUC 616 artifacts. Each featured artifact includes a short description, my contribution, competency connections, and a reflection on what I learned.
+            </p>
+          </div>
+          <div class="preview">
+            <div>
+              <strong>Preview area</strong>
+              <small>Replace this block with a collage, screenshot montage, or a hero image from your artifacts.</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="context">
+      <div class="container">
+        <div class="section-header">
+          <h2>Residency context</h2>
+          <p>
+            My residency took place at Fast Forward Medical Innovation (FFMI), where I supported projects related to online commercialization education. Much of my work centered on fastPACE-related course materials and gradually moved from reviewing existing learning experiences to building learner-facing supports and design resources in Canvas.
+          </p>
+        </div>
+
+        <div class="context-grid">
+          <article class="card">
+            <h3>What I worked on</h3>
+            <p>
+              My residency followed a full cycle from review to design. I began by examining existing FFMI course materials, identifying gaps in structure, alignment, and learner support, and conducting external research to better understand the commercialization content behind the courses. As the work developed, my role moved beyond analysis into design. I contributed to templates, learner-facing tools, and course support materials, and I began thinking more directly about how Canvas could be used to reorganize content, add missing supports, and strengthen the learner experience. This portfolio reflects that progression while also leaving space for design artifacts that are still in development.
+            </p>
+          </article>
+          <article class="card">
+            <h3>How this work strengthened my LXD competencies</h3>
+            <p>
+              Through this residency, I came to see design more clearly as a process of translation. Review work showed me where a course felt unclear, incomplete, or difficult to act on, but design work required me to respond to those gaps in more concrete ways. By moving into templates, learner-facing tools, and Canvas-based course support, I strengthened my ability to connect analysis with action. This experience helped me grow not only in reviewing learning environments, but also in designing structures that make complex content more usable, more navigable, and more instructionally coherent for learners.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="artifacts">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured residency artifacts</h2>
+          <p>
+            The artifacts below trace a progression in my residency work: from reviewing and identifying learner-facing issues, to building research-informed structures, to collaborating on learning goals, and finally to designing learner-facing tools and tasks.
+          </p>
+        </div>
+
+        <div class="artifacts-wrap">
+          <article class="artifact" id="artifact-1">
+            <div class="artifact-grid">
+              <div class="artifact-copy card">
+                <div>
+                  <div class="artifact-kicker">Featured Artifact 1</div>
+                  <h3>fastPACE Precursor Pilot Review</h3>
+                  <p class="artifact-subtitle">Reviewing alignment, scaffolding, and learner guidance in a pre-launch online course</p>
+                </div>
+                <div class="tags">
+                  <span class="tag">Applying theories</span>
+                  <span class="tag">Research & evaluation</span>
+                  <span class="tag">Inclusive design</span>
+                  <span class="tag">Technology affordances</span>
+                </div>
+                <div class="artifact-sections">
+                  <div class="artifact-block">
+                    <strong>What it is</strong>
+                    <p>This artifact is a pilot review of the fastPACE Precursor course, an early-stage online learning experience designed to help learners clarify an innovation need before entering the full fastPACE program.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>How it was developed</strong>
+                    <p>I reviewed the unpublished course alongside its learning goals and completed a structured feedback template module by module. My analysis focused on alignment, scaffolding, navigation clarity, assessment guidance, and the learner experience within an e-learning environment.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>My contribution</strong>
+                    <p>I identified recurring issues such as uneven alignment between ambitious learning outcomes and lighter supports, limited success criteria for assignments, unclear onboarding and navigation cues, and the course’s heavy reliance on text and video without enough alternative representations.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>What I learned</strong>
+                    <p>This was my first experience systematically reviewing a course from a learning design perspective. I learned to ask not only whether content was present, but whether learners were actually being prepared to do the work the course expected of them.</p>
+                  </div>
+                </div>
+                <div class="artifact-actions">
+                  <a class="btn btn-primary" href="https://docs.google.com/document/d/18dezy1WaYPkX5t3VhecEq_HYzYyC2AQR/edit?usp=sharing&ouid=101229644284378789447&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer">View full artifact</a>
+                  <a class="btn btn-secondary" href="#">View source notes</a>
+                </div>
+              </div>
+              <div class="artifact-media">
+               <div class="artifact-preview artifact-preview-dual">
+                <img src="artifact1-review-table.png" alt="Screenshot of the fastPACE precursor pilot review template with representative feedback comments.">
+                <img src="artifact1-canvas-module.png" alt="Canvas module view showing the welcome module structure referenced in the pilot review.">
+                </div>
+                <div class="callout">
+                  <strong>Key takeaway</strong>
+                  <p>Strong learning outcomes need equally visible scaffolds, criteria, and learner guidance.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact" id="artifact-2">
+            <div class="artifact-grid">
+              <div class="artifact-copy card">
+                <div>
+                  <div class="artifact-kicker">Featured Artifact 2</div>
+                  <h3>Commercialization Timeline and Gap Analysis</h3>
+                  <p class="artifact-subtitle">Building a learner-facing medical device development timeline to strengthen fastPACE course support</p>
+                </div>
+                <div class="tags">
+                  <span class="tag">Research & evaluation</span>
+                  <span class="tag">Documentation</span>
+                  <span class="tag">Applying theories</span>
+                  <span class="tag">Workplace collaboration</span>
+                </div>
+                <div class="artifact-sections">
+                  <div class="artifact-block">
+                    <strong>What it is</strong>
+                    <p>This artifact is a commercialization timeline and gap analysis developed to support improvements to the published fastPACE Fall 2025 course. It began with a review of the existing Canvas course and then expanded into a research-informed medical device timeline used to identify missing or under-supported content.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>How it was developed</strong>
+                    <p>I first reviewed the published fastPACE Fall 2025 Canvas course to understand its content, module structure, and overall sequence. I then used external research to map commercialization milestones across areas such as medical devices and therapeutics. After feedback, I narrowed the work to medical devices and revised the timeline to make each phase more explanatory and more useful for learners, while also identifying gaps between the timeline and the existing course materials.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>My contribution</strong>
+                    <p>I reviewed course content, synthesized external sources, refined milestone phases, identified gaps between the timeline and Canvas modules, and added resources and definitions that could support learner understanding.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>What I learned</strong>
+                    <p>This artifact taught me that LXD work sometimes requires stepping far outside one’s original content comfort zone. Even without being a domain expert, I could contribute by identifying what learners may not understand and where complex content needed clearer structure and support.</p>
+                  </div>
+                </div>
+                <div class="artifact-actions">
+                  <a class="btn btn-primary" href="https://docs.google.com/document/d/18aeuPDrX4QDZFy3lt3CcyMQwr0EGOv4iZzNVnFelND8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View full artifact</a>
+                  <a class="btn btn-secondary" href="#">View revised timeline</a>
+                </div>
+              </div>
+              <div class="artifact-media">
+                <div class="artifact-preview artifact-preview-dual">
+                  <img src="artifact2-canvas-modules.png" alt="Canvas modules view of the published fastPACE Fall 2025 course used for initial course review.">
+                  <img src="artifact2-timeline-revise.png" alt="Screenshot of the commercialization timeline revision document for medical devices.">
+                </div>
+                <div class="callout">
+                  <strong>Key takeaway</strong>
+                  <p>Research becomes most useful when it helps clarify what learners need and where a course is currently under-supporting them.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact" id="artifact-3">
+            <div class="artifact-grid">
+              <div class="artifact-copy card">
+                <div>
+                  <div class="artifact-kicker">Featured Artifact 3</div>
+                  <h3>Integrated Gap Analysis and Learning Goals</h3>
+                  <p class="artifact-subtitle">Turning distributed observations into shared instructional priorities for FFMI Canvas medical device phases</p>
+                </div>
+                <div class="tags">
+                  <span class="tag">Workplace skills</span>
+                  <span class="tag">Research & evaluation</span>
+                  <span class="tag">Applying theories</span>
+                  <span class="tag">Documentation</span>
+                </div>
+                <div class="artifact-sections">
+                  <div class="artifact-block">
+                    <strong>What it is</strong>
+                    <p>This artifact is a collaborative gap analysis and learning goals document that brought together earlier individual analyses and translated shared gaps into learner-facing priorities and observable learning goals.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>How it was developed</strong>
+                    <p>After conducting earlier individual reviews, Charles and I met to compare the gaps we had identified and discuss where our findings overlapped or differed. We consolidated the most important issues into nine integrated gaps and then defined foundational, applied, and performance-based learning goals for each.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>My contribution</strong>
+                    <p>I helped synthesize prior findings, refine the structure of the gaps, raise questions about audience assumptions, and shape the learning goals connected to each gap. This work moved us from identifying missing content to defining what learners should actually be able to understand and do.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>What I learned</strong>
+                    <p>I learned that gap analysis becomes much more useful when it is tied to learner performance rather than only missing content. I also became more aware that audience assumptions shape what truly needs explanation and what level of support is instructionally appropriate.</p>
+                  </div>
+                </div>
+                <div class="artifact-actions">
+                  <a class="btn btn-primary" href="https://docs.google.com/document/d/1SxarB3wSOz_pRb7LNHYpR1DWml-haql1a6NZEvj6MJM/preview" target="_blank" rel="noopener noreferrer">View full artifact</a>
+                  <a class="btn btn-secondary" href="#">View gap summary</a>
+                </div>
+              </div>
+              <div class="artifact-media">
+                <div class="artifact-preview artifact-preview-dual">
+                  <img src="artifact3-gap-summary.png" alt="Integrated gap summary table showing nine identified gaps for the FFMI Canvas medical device phases.">
+                  <img src="artifact3-gap-specific.png" alt="Example of a specific gap paired with suggested learning goals and mastery levels.">
+                </div>
+                <div class="callout">
+                  <strong>Key takeaway</strong>
+                  <p>The strongest design move is not only finding what is missing, but deciding what learners should be able to explain, produce, or justify when that gap is addressed.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact" id="artifact-4">
+            <div class="artifact-grid">
+              <div class="artifact-copy card">
+                <div>
+                  <div class="artifact-kicker">Featured Artifact 4</div>
+                  <h3>FFMI Medical Device Learning Templates</h3>
+                  <p class="artifact-subtitle">Designing learner-facing tools from integrated gaps and learning goals</p>
+                </div>
+                <div class="tags">
+                  <span class="tag">Design resources</span>
+                  <span class="tag">Applying theories</span>
+                  <span class="tag">Workplace collaboration</span>
+                  <span class="tag">Research & evaluation</span>
+                </div>
+                <div class="artifact-sections">
+                  <div class="artifact-block">
+                    <strong>What it is</strong>
+                    <p>This artifact is a set of learner-facing medical device learning templates developed for FFMI Canvas course revision. The templates were designed to turn under-scaffolded milestones into concrete learner artifacts.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>How it was developed</strong>
+                    <p>After our integrated gap analysis and learning goals work, the team received feedback encouraging us to move toward templates and learning tools. We translated specific gaps into short, usable supports such as a Device Concept Brief, Proof-of-Concept Plan, Benchtop Test Matrix, DHF-Style Traceability Log, and other decision aids.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>My contribution</strong>
+                    <p>I contributed to discussions about the instructional purpose of the tools and helped translate identified gaps into learner-facing supports that would make learner reasoning more visible and usable.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>What I learned</strong>
+                    <p>This artifact marked a turning point in my residency work: from reviewing and identifying gaps to designing concrete supports that learners could actually use. It also showed me that design often grows directly out of careful review work.</p>
+                  </div>
+                </div>
+                <div class="artifact-actions">
+                  <a class="btn btn-primary" href="https://docs.google.com/document/d/1tR-PuK_p9ZZ55TBCehly6RFaYvqIFQOIWFLC49mB1M8/preview" target="_blank" rel="noopener noreferrer">View full artifact</a>
+                  <a class="btn btn-secondary" href="#">View template overview</a>
+                </div>
+              </div>
+              <div class="artifact-media">
+                <div class="artifact-preview artifact-preview-dual">
+                  <img src="artifact4-template-overview.png" alt="Overview table of FFMI medical device learning templates.">
+                  <img src="artifact4-template-specific.png" alt="Detailed example of a learner-facing medical device template.">
+                </div>
+                <div class="callout">
+                  <strong>Key takeaway</strong>
+                  <p>Review and design are not separate phases; thoughtful review can become the basis for powerful learner-facing resources.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="artifact" id="artifact-5">
+            <div class="artifact-grid">
+              <div class="artifact-copy card">
+                <div>
+                  <div class="artifact-kicker">Featured Artifact 5</div>
+                  <h3>Commercial Learning Tasks for Medical Device Innovation</h3>
+                  <p class="artifact-subtitle">Designing market, IP, and monetization tasks that reconnect the course to commercialization logic</p>
+                </div>
+                <div class="tags">
+                  <span class="tag">Applying theories</span>
+                  <span class="tag">Design resources</span>
+                  <span class="tag">Research & evaluation</span>
+                  <span class="tag">Workplace collaboration</span>
+                </div>
+                <div class="artifact-sections">
+                  <div class="artifact-block">
+                    <strong>What it is</strong>
+                    <p>This artifact is a set of short commercial learning tasks designed to help learners engage more concretely with market analysis, intellectual property, and monetization in the context of medical device innovation.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>How it was developed</strong>
+                    <p>This work grew out of a return to the commercial core of the Canvas modules. Charles and I designed a set of six themed learning tools focused on market analysis, IP, and monetization, while also surfacing the need to integrate regulatory affairs more explicitly.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>My contribution</strong>
+                    <p>I helped co-design the learner-facing tasks, shape their structure and prompts, and think through how these tasks could make commercial decision-making more visible and manageable for learners.</p>
+                  </div>
+                  <div class="artifact-block">
+                    <strong>What I learned</strong>
+                    <p>This artifact helped me see that commercial content can also be designed instructionally. Learners need structured opportunities to reason through market, IP, monetization, and regulatory choices rather than only read about them.</p>
+                  </div>
+                </div>
+                <div class="artifact-actions">
+                  <a class="btn btn-primary" href="https://docs.google.com/document/d/1I-8R3H7tbHX6DMSQhU8APqqySkx60d_S6lBHaEB0WK8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View full artifact</a>
+                  <a class="btn btn-secondary" href="#">View task overview</a>
+                </div>
+              </div>
+              <div class="artifact-media">
+                <div class="artifact-preview artifact-preview-dual">
+                  <img src="artifact5-commercial-learning-task.png" alt="Detailed learner-facing commercial task titled Pick Your First Customer.">
+                </div>
+                <div class="callout">
+                  <strong>Key takeaway</strong>
+                  <p>Commercial reasoning becomes more teachable when learners are asked to make and justify early-stage decisions.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="additional">
+      <div class="container">
+        <div class="section-header">
+          <h2>Additional EDUC 616 work</h2>
+          <p>
+            This section is intentionally reserved for additional course-based artifacts that demonstrate growth across the LXD core competencies beyond residency-specific work. It can be expanded later without changing the overall site structure.
+          </p>
+        </div>
+        <div class="placeholder-note">
+          Placeholder for 1–3 additional EDUC 616 artifacts. This section can hold smaller artifacts, process snapshots, or class-based design work that complements the residency storyline.
+        </div>
+      </div>
+    </section>
+
+    <section id="competencies">
+  <div class="container">
+    <div class="section-header">
+      <h2>Core Competency Connections and Growth</h2>
+      <p>
+        This section links my residency artifacts to the official LXD core competencies while also showing how my understanding of those competencies developed over time. Rather than treating competencies as isolated categories, I now see them as overlapping dimensions of practice that became more visible through course review, collaborative analysis, documentation, and learner-facing design work.
+      </p>
+    </div>
+
+    <div class="artifact-actions" style="margin-bottom: 1.25rem;">
+      <a class="btn btn-primary" href="competency-poster.pdf" target="_blank" rel="noopener noreferrer">
+        View competency poster
+      </a>
+      <a class="btn btn-secondary" href="competency-planning.pdf" target="_blank" rel="noopener noreferrer">
+        View competency planning document
+      </a>
+    </div>
+
+    <div class="reflection-grid competency-growth-grid">
+      <article class="card">
+        <h3>Review and diagnosis</h3>
+        <p>
+          My early work focused on reviewing course materials through lenses such as alignment, scaffolding, accessibility, and learner guidance. This stage helped me build stronger habits of noticing where learning expectations and learner support did not match.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Synthesis and instructional articulation</h3>
+        <p>
+          As the work progressed, I moved from noticing issues to organizing them into clearer instructional priorities. Gap analysis, learning goals, and documentation became ways of translating scattered observations into more actionable design thinking.
+        </p>
+      </article>
+      <article class="card">
+        <h3>Design response</h3>
+        <p>
+          Later artifacts pushed me beyond analysis into design. Templates and commercial learning tasks helped me see that LXD work is not only about identifying what is missing, but also about building supports that make learner thinking more visible, structured, and usable.
+        </p>
+      </article>
+    </div>
+
+    <div class="callout" style="margin: 1.4rem 0 1.1rem;">
+      <strong>How to read this table</strong>
+      <p><strong>P</strong> = primary evidence in this artifact. <strong>S</strong> = supporting evidence that is present but not central.</p>
+    </div>
+
+    <div class="competency-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Artifact</th>
+            <th>Applying Learning Theories and Design Frameworks</th>
+            <th>Creating Design Resources and Project Documentation</th>
+            <th>Fostering Workplace Skills and Professional Relationships</th>
+            <th>Integrating Inclusive Design Principles and Practices</th>
+            <th>Using Knowledge of Technology Affordances and Constraints</th>
+            <th>Using Research and Evaluation Skills</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>fastPACE Precursor Pilot Review</td>
+            <td>P</td>
+            <td>S</td>
+            <td>S</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+          </tr>
+          <tr>
+            <td>Commercialization Timeline and Gap Analysis</td>
+            <td>S</td>
+            <td>P</td>
+            <td>S</td>
+            <td></td>
+            <td>S</td>
+            <td>P</td>
+          </tr>
+          <tr>
+            <td>Integrated Gap Analysis and Learning Goals</td>
+            <td>P</td>
+            <td>P</td>
+            <td>P</td>
+            <td>S</td>
+            <td>S</td>
+            <td>P</td>
+          </tr>
+          <tr>
+            <td>FFMI Medical Device Learning Templates</td>
+            <td>P</td>
+            <td>P</td>
+            <td>S</td>
+            <td>S</td>
+            <td>S</td>
+            <td>S</td>
+          </tr>
+          <tr>
+            <td>Commercial Learning Tasks for Medical Device Innovation</td>
+            <td>P</td>
+            <td>P</td>
+            <td>S</td>
+            <td></td>
+            <td>S</td>
+            <td>S</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="context-grid competency-card-grid" style="margin-top: 1.4rem;">
+      <article class="card">
+        <h3>Applying Learning Theories and Design Frameworks</h3>
+        <p>
+          This competency first became visible in my course review work, where I examined whether learning outcomes, activities, and assessments were aligned and whether learners had enough scaffolding to complete expected work. Over time, I moved beyond identifying weak alignment and began defining learning goals, learner performances, and more intentional supports across later artifacts.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Creating Design Resources and Project Documentation</h3>
+        <p>
+          What began as review notes, checklists, and visual mappings gradually became a more deliberate part of my design practice. I learned that documentation does not only record decisions. It can also clarify thinking, surface gaps, support stakeholder communication, and become a bridge from analysis into design.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Fostering Workplace Skills and Professional Relationships</h3>
+        <p>
+          Because my residency was fully remote, collaboration depended on clear written communication, follow-up notes, revision cycles, and the ability to keep work moving between meetings. I became more intentional about making communication actionable and about treating feedback as part of the design process rather than as an administrative add-on.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Integrating Inclusive Design Principles and Practices</h3>
+        <p>
+          My understanding of inclusive design became much more practical through course review. Instead of thinking about accessibility only as compliance, I began using UDL and learner variability as review lenses, especially when documenting text-heavy lessons, unclear prompts, missing alternate supports, and places where the learner path could be made easier to follow.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Using Knowledge of Technology Affordances and Constraints</h3>
+        <p>
+          This competency appeared more broadly in my work than a simple checkbox suggests. Canvas was not just the platform where the course lived. Its navigation flow, media behavior, linked tools, and learner-facing structure shaped the experience itself. I also became more critical about how technologies such as generative AI can support early-stage research and idea organization while still requiring verification and judgment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Using Research and Evaluation Skills</h3>
+        <p>
+          I grew from using outside sources to supplement my understanding into using them to justify design direction. External timelines, FDA materials, and commercialization references became tools for identifying what was missing, clarifying course phases, and making more evidence-informed recommendations about what learners should know, do, and be prepared for.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+    <section id="reflection">
+      <div class="container">
+        <div class="section-header">
+          <h2>Final reflection</h2>
+          <p>
+            Looking across these artifacts, my residency growth has felt cumulative rather than fragmented. What began as course review and feedback gradually developed into a broader design process shaped by analysis, collaboration, and resource creation.
+          </p>
+        </div>
+        <div class="reflection-grid">
+          <article class="card">
+            <h3>How my design thinking evolved</h3>
+            <p>
+              Early in the residency, I often approached design work by looking for visible problems: where learning goals and activities did not align, where scaffolding was thin, or where the learner path felt confusing. Over time, my thinking became more layered. I began asking not only what was missing, but what learners were actually being asked to understand, produce, justify, or decide. That shift moved me from a surface-level review mindset into a stronger design mindset. Concepts such as alignment, scaffolding, learner support, and representational access became more than course ideas to reference; they became practical lenses I used to evaluate real instructional materials in Canvas and to make decisions about what kinds of supports would meaningfully improve the experience. In that sense, this residency helped me move from recognizing design principles in theory to using them as working tools in practice.
+            </p>
+          </article>
+          <article class="card">
+            <h3>What I now understand more clearly</h3>
+            <p>
+              I also understand the LXD core competencies more concretely now because I experienced how they overlap in practice. Applying learning theories and design frameworks shaped how I interpreted alignment and learner support. Research and evaluation skills became important when I compared course content against external timelines, regulatory references, and development processes. Documentation and design resources emerged when gaps were translated into structured tools, templates, and task supports. Workplace skills were not separate from design work either; they were visible in feedback conversations, revision cycles, collaborative synthesis, and shared decision-making. Most importantly, I now see that learning experience design is not limited to building final products. It includes reviewing, clarifying, sequencing, structuring, and making learner thinking visible. Even when working outside my original domain knowledge, I can still contribute meaningfully by asking what learners need, what the environment currently affords, and how design can reduce unnecessary ambiguity while deepening engagement.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+    <footer class="footer footer-minimal">
+      <div class="container">
+      <div class="footer-rule"></div>
+    </div>
+    </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+    const toTop = document.getElementById('toTop');
+
+    const activateLink = () => {
+      let current = 'home';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      activateLink();
+      if (window.scrollY > 500) {
+        toTop.classList.add('show');
+      } else {
+        toTop.classList.remove('show');
+      }
+    });
+
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    activateLink();
+  </script>
+</body>
+</html>
