@@ -21,6 +21,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -214,7 +215,9 @@
       color: white;
     }
 
-    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
 
     .btn-secondary {
       background: transparent;
@@ -230,18 +233,6 @@
       justify-content: space-between;
     }
 
-    .hero-card .preview {
-      min-height: 280px;
-      background: linear-gradient(135deg, rgba(168, 181, 162, 0.22), rgba(238, 231, 219, 0.92));
-      border: 1px dashed rgba(127, 145, 131, 0.4);
-      border-radius: 20px;
-      padding: 1.25rem;
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      text-align: center;
-    }
-
     .hero-card h3 {
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
@@ -249,6 +240,35 @@
 
     .hero-card p {
       color: var(--muted);
+    }
+
+    .hero-card-guide {
+      gap: 1.2rem;
+    }
+
+    .hero-guide-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .hero-guide-item {
+      padding: 1rem 1.05rem;
+      border-radius: 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .hero-guide-item strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .hero-guide-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     section {
@@ -406,6 +426,7 @@
       margin-top: 0.5rem;
       font-size: 0.85rem;
     }
+
     .artifact-preview-dual {
       display: flex;
       flex-direction: column;
@@ -416,12 +437,12 @@
       min-height: auto;
     }
 
-.artifact-preview-dual img {
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    border: 1px solid rgba(216, 214, 208, 0.95);
-    background: #ffffff;
+    .artifact-preview-dual img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(216, 214, 208, 0.95);
+      background: #ffffff;
     }
 
     .callout {
@@ -436,14 +457,8 @@
       margin-bottom: 0.35rem;
     }
 
-    .callout p { color: var(--muted); }
-
-    .placeholder-note {
-      padding: 1rem 1.1rem;
-      border-radius: 16px;
-      border: 1px dashed rgba(127, 145, 131, 0.45);
+    .callout p {
       color: var(--muted);
-      background: rgba(238, 231, 219, 0.45);
     }
 
     .competency-table-wrap {
@@ -474,32 +489,35 @@
       color: var(--text);
     }
 
-    td { color: var(--muted); }
-    
+    td {
+      color: var(--muted);
+    }
+
     .competency-growth-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 1.25rem;
-}
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 1.25rem;
+    }
 
-.competency-card-grid {
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 980px) {
-  .competency-growth-grid,
-  .competency-card-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    .competency-card-grid {
+      grid-template-columns: 1fr 1fr;
+    }
 
     .reflection-grid {
       grid-template-columns: 1fr 1fr;
     }
 
     .footer {
-      padding: 3rem 0 4rem;
-      color: var(--muted);
-      font-size: 0.94rem;
+      padding: 2.5rem 0 3.5rem;
+    }
+
+    .footer-minimal {
+      margin-top: 1.5rem;
+    }
+
+    .footer-rule {
+      height: 1px;
+      background: rgba(216, 214, 208, 0.9);
+      border-radius: 999px;
     }
 
     .to-top {
@@ -531,7 +549,9 @@
       .hero-grid,
       .context-grid,
       .artifact-grid,
-      .reflection-grid {
+      .reflection-grid,
+      .competency-growth-grid,
+      .competency-card-grid {
         grid-template-columns: 1fr;
       }
 
@@ -578,38 +598,70 @@
         <a href="#home">Home</a>
         <a href="#context">Context</a>
         <a href="#artifacts">Artifacts</a>
-        <a href="#additional">Additional Work</a>
-        <a href="#competencies">Competency Map</a>
+        <a href="#competencies">Competencies</a>
         <a href="#reflection">Reflection</a>
       </nav>
     </div>
   </header>
 
-  <aside class="hero-card hero-card-guide">
-  <div>
-    <h3>How this portfolio is structured</h3>
-    <p>
-      This portfolio is organized around a set of featured residency artifacts that trace my development from course review to learner-facing design. Each artifact includes a brief description, my contribution, competency connections, and a reflection on what I learned.
-    </p>
-  </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">LXD Residency Portfolio</span>
+          <h1>From Review to Design at FFMI</h1>
+          <p class="lead">
+            This portfolio showcases my work as an LXD Resident at Fast Forward Medical Innovation (FFMI). Across course review, gap analysis, external research, and the development of learner-facing tools, my residency gradually moved from identifying design issues to building clearer instructional supports within Canvas-based commercialization education.
+          </p>
 
-  <div class="hero-guide-list">
-    <div class="hero-guide-item">
-      <strong>Artifacts</strong>
-      <p>Follow the main trajectory of my residency work through five featured artifacts, from review and analysis to templates and commercial learning tasks.</p>
-    </div>
+          <div class="hero-meta">
+            <div class="meta-card">
+              <strong>Primary context</strong>
+              <span>FFMI commercialization education and fastPACE-related Canvas work</span>
+            </div>
+            <div class="meta-card">
+              <strong>My role</strong>
+              <span>Course review, gap analysis, external research, and learner-facing tools and templates</span>
+            </div>
+            <div class="meta-card">
+              <strong>Portfolio focus</strong>
+              <span>Selected artifacts, reflections, and growth across LXD competencies</span>
+            </div>
+          </div>
 
-    <div class="hero-guide-item">
-      <strong>Competencies</strong>
-      <p>The competency section shows how these artifacts connect to the six LXD core competencies and how that growth became visible across the residency.</p>
-    </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#artifacts">View featured artifacts</a>
+            <a class="btn btn-secondary" href="#competencies">See competencies</a>
+          </div>
+        </div>
 
-    <div class="hero-guide-item">
-      <strong>Reflection</strong>
-      <p>The final reflection explains how my understanding of learning experience design deepened from theory into practice through this work.</p>
-    </div>
-  </div>
-</aside>
+        <aside class="hero-card hero-card-guide">
+          <div>
+            <h3>How this portfolio is structured</h3>
+            <p>
+              This portfolio is organized around a set of featured residency artifacts that trace my development from course review to learner-facing design. Each artifact includes a brief description, my contribution, competency connections, and a reflection on what I learned.
+            </p>
+          </div>
+
+          <div class="hero-guide-list">
+            <div class="hero-guide-item">
+              <strong>Artifacts</strong>
+              <p>Follow the main trajectory of my residency work through five featured artifacts, from review and analysis to templates and commercial learning tasks.</p>
+            </div>
+
+            <div class="hero-guide-item">
+              <strong>Competencies</strong>
+              <p>The competency section shows how these artifacts connect to the six LXD core competencies and how that growth became visible across the residency.</p>
+            </div>
+
+            <div class="hero-guide-item">
+              <strong>Reflection</strong>
+              <p>The final reflection explains how my understanding of learning experience design deepened from theory into practice through this work.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
     <section id="context">
       <div class="container">
@@ -624,9 +676,10 @@
           <article class="card">
             <h3>What I worked on</h3>
             <p>
-              My residency followed a full cycle from review to design. I began by examining existing FFMI course materials, identifying gaps in structure, alignment, and learner support, and conducting external research to better understand the commercialization content behind the courses. As the work developed, my role moved beyond analysis into design. I contributed to templates, learner-facing tools, and course support materials, and I began thinking more directly about how Canvas could be used to reorganize content, add missing supports, and strengthen the learner experience. This portfolio reflects that progression while also leaving space for design artifacts that are still in development.
+              My residency followed a full cycle from review to design. I began by examining existing FFMI course materials, identifying gaps in structure, alignment, and learner support, and conducting external research to better understand the commercialization content behind the courses. As the work developed, my role moved beyond analysis into design. I contributed to templates, learner-facing tools, and course support materials, and I began thinking more directly about how Canvas could be used to reorganize content, add missing supports, and strengthen the learner experience. This portfolio documents that progression through a selected set of representative artifacts.
             </p>
           </article>
+
           <article class="card">
             <h3>How this work strengthened my LXD competencies</h3>
             <p>
@@ -684,9 +737,9 @@
                 </div>
               </div>
               <div class="artifact-media">
-               <div class="artifact-preview artifact-preview-dual">
-                <img src="artifact1-review-table.png" alt="Screenshot of the fastPACE precursor pilot review template with representative feedback comments.">
-                <img src="artifact1-canvas-module.png" alt="Canvas module view showing the welcome module structure referenced in the pilot review.">
+                <div class="artifact-preview artifact-preview-dual">
+                  <img src="artifact1-review-table.png" alt="Screenshot of the fastPACE precursor pilot review template with representative feedback comments.">
+                  <img src="artifact1-canvas-module.png" alt="Canvas module view showing the welcome module structure referenced in the pilot review.">
                 </div>
                 <div class="callout">
                   <strong>Key takeaway</strong>
@@ -894,181 +947,168 @@
       </div>
     </section>
 
-    <section id="additional">
+    <section id="competencies">
       <div class="container">
         <div class="section-header">
-          <h2>Additional EDUC 616 work</h2>
+          <h2>Core Competency Connections and Growth</h2>
           <p>
-            This section is intentionally reserved for additional course-based artifacts that demonstrate growth across the LXD core competencies beyond residency-specific work. It can be expanded later without changing the overall site structure.
+            This section links my residency artifacts to the official LXD core competencies while also showing how my understanding of those competencies developed over time. Rather than treating competencies as isolated categories, I now see them as overlapping dimensions of practice that became more visible through course review, collaborative analysis, documentation, and learner-facing design work.
           </p>
         </div>
-        <div class="placeholder-note">
-          Placeholder for 1–3 additional EDUC 616 artifacts. This section can hold smaller artifacts, process snapshots, or class-based design work that complements the residency storyline.
+
+        <div class="artifact-actions" style="margin-bottom: 1.25rem;">
+          <a class="btn btn-primary" href="competency-poster.pdf" target="_blank" rel="noopener noreferrer">
+            View competency poster
+          </a>
+          <a class="btn btn-secondary" href="competency-planning.pdf" target="_blank" rel="noopener noreferrer">
+            View competency planning document
+          </a>
+        </div>
+
+        <div class="reflection-grid competency-growth-grid">
+          <article class="card">
+            <h3>Review and diagnosis</h3>
+            <p>
+              My early work focused on reviewing course materials through lenses such as alignment, scaffolding, accessibility, and learner guidance. This stage helped me build stronger habits of noticing where learning expectations and learner support did not match.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Synthesis and instructional articulation</h3>
+            <p>
+              As the work progressed, I moved from noticing issues to organizing them into clearer instructional priorities. Gap analysis, learning goals, and documentation became ways of translating scattered observations into more actionable design thinking.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Design response</h3>
+            <p>
+              Later artifacts pushed me beyond analysis into design. Templates and commercial learning tasks helped me see that LXD work is not only about identifying what is missing, but also about building supports that make learner thinking more visible, structured, and usable.
+            </p>
+          </article>
+        </div>
+
+        <div class="callout" style="margin: 1.4rem 0 1.1rem;">
+          <strong>How to read this table</strong>
+          <p><strong>P</strong> = primary evidence in this artifact. <strong>S</strong> = supporting evidence that is present but not central.</p>
+        </div>
+
+        <div class="competency-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Artifact</th>
+                <th>Applying Learning Theories and Design Frameworks</th>
+                <th>Creating Design Resources and Project Documentation</th>
+                <th>Fostering Workplace Skills and Professional Relationships</th>
+                <th>Integrating Inclusive Design Principles and Practices</th>
+                <th>Using Knowledge of Technology Affordances and Constraints</th>
+                <th>Using Research and Evaluation Skills</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fastPACE Precursor Pilot Review</td>
+                <td>P</td>
+                <td>S</td>
+                <td>S</td>
+                <td>P</td>
+                <td>P</td>
+                <td>P</td>
+              </tr>
+              <tr>
+                <td>Commercialization Timeline and Gap Analysis</td>
+                <td>S</td>
+                <td>P</td>
+                <td>S</td>
+                <td></td>
+                <td>S</td>
+                <td>P</td>
+              </tr>
+              <tr>
+                <td>Integrated Gap Analysis and Learning Goals</td>
+                <td>P</td>
+                <td>P</td>
+                <td>P</td>
+                <td>S</td>
+                <td>S</td>
+                <td>P</td>
+              </tr>
+              <tr>
+                <td>FFMI Medical Device Learning Templates</td>
+                <td>P</td>
+                <td>P</td>
+                <td>S</td>
+                <td>S</td>
+                <td>S</td>
+                <td>S</td>
+              </tr>
+              <tr>
+                <td>Commercial Learning Tasks for Medical Device Innovation</td>
+                <td>P</td>
+                <td>P</td>
+                <td>S</td>
+                <td></td>
+                <td>S</td>
+                <td>S</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="context-grid competency-card-grid" style="margin-top: 1.4rem;">
+          <article class="card">
+            <h3>Applying Learning Theories and Design Frameworks</h3>
+            <p>
+              This competency first became visible in my course review work, where I examined whether learning outcomes, activities, and assessments were aligned and whether learners had enough scaffolding to complete expected work. Over time, I moved beyond identifying weak alignment and began defining learning goals, learner performances, and more intentional supports across later artifacts.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Creating Design Resources and Project Documentation</h3>
+            <p>
+              What began as review notes, checklists, and visual mappings gradually became a more deliberate part of my design practice. I learned that documentation does not only record decisions. It can also clarify thinking, surface gaps, support stakeholder communication, and become a bridge from analysis into design.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Fostering Workplace Skills and Professional Relationships</h3>
+            <p>
+              Because my residency was fully remote, collaboration depended on clear written communication, follow-up notes, revision cycles, and the ability to keep work moving between meetings. I became more intentional about making communication actionable and about treating feedback as part of the design process rather than as an administrative add-on.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Integrating Inclusive Design Principles and Practices</h3>
+            <p>
+              My understanding of inclusive design became much more practical through course review. Instead of thinking about accessibility only as compliance, I began using UDL and learner variability as review lenses, especially when documenting text-heavy lessons, unclear prompts, missing alternate supports, and places where the learner path could be made easier to follow.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Using Knowledge of Technology Affordances and Constraints</h3>
+            <p>
+              This competency appeared more broadly in my work than a simple checkbox suggests. Canvas was not just the platform where the course lived. Its navigation flow, media behavior, linked tools, and learner-facing structure shaped the experience itself. I also became more critical about how technologies such as generative AI can support early-stage research and idea organization while still requiring verification and judgment.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Using Research and Evaluation Skills</h3>
+            <p>
+              I grew from using outside sources to supplement my understanding into using them to justify design direction. External timelines, FDA materials, and commercialization references became tools for identifying what was missing, clarifying course phases, and making more evidence-informed recommendations about what learners should know, do, and be prepared for.
+            </p>
+          </article>
         </div>
       </div>
     </section>
-
-    <section id="competencies">
-  <div class="container">
-    <div class="section-header">
-      <h2>Core Competency Connections and Growth</h2>
-      <p>
-        This section links my residency artifacts to the official LXD core competencies while also showing how my understanding of those competencies developed over time. Rather than treating competencies as isolated categories, I now see them as overlapping dimensions of practice that became more visible through course review, collaborative analysis, documentation, and learner-facing design work.
-      </p>
-    </div>
-
-    <div class="artifact-actions" style="margin-bottom: 1.25rem;">
-      <a class="btn btn-primary" href="competency-poster.pdf" target="_blank" rel="noopener noreferrer">
-        View competency poster
-      </a>
-      <a class="btn btn-secondary" href="competency-planning.pdf" target="_blank" rel="noopener noreferrer">
-        View competency planning document
-      </a>
-    </div>
-
-    <div class="reflection-grid competency-growth-grid">
-      <article class="card">
-        <h3>Review and diagnosis</h3>
-        <p>
-          My early work focused on reviewing course materials through lenses such as alignment, scaffolding, accessibility, and learner guidance. This stage helped me build stronger habits of noticing where learning expectations and learner support did not match.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Synthesis and instructional articulation</h3>
-        <p>
-          As the work progressed, I moved from noticing issues to organizing them into clearer instructional priorities. Gap analysis, learning goals, and documentation became ways of translating scattered observations into more actionable design thinking.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Design response</h3>
-        <p>
-          Later artifacts pushed me beyond analysis into design. Templates and commercial learning tasks helped me see that LXD work is not only about identifying what is missing, but also about building supports that make learner thinking more visible, structured, and usable.
-        </p>
-      </article>
-    </div>
-
-    <div class="callout" style="margin: 1.4rem 0 1.1rem;">
-      <strong>How to read this table</strong>
-      <p><strong>P</strong> = primary evidence in this artifact. <strong>S</strong> = supporting evidence that is present but not central.</p>
-    </div>
-
-    <div class="competency-table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Artifact</th>
-            <th>Applying Learning Theories and Design Frameworks</th>
-            <th>Creating Design Resources and Project Documentation</th>
-            <th>Fostering Workplace Skills and Professional Relationships</th>
-            <th>Integrating Inclusive Design Principles and Practices</th>
-            <th>Using Knowledge of Technology Affordances and Constraints</th>
-            <th>Using Research and Evaluation Skills</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>fastPACE Precursor Pilot Review</td>
-            <td>P</td>
-            <td>S</td>
-            <td>S</td>
-            <td>P</td>
-            <td>P</td>
-            <td>P</td>
-          </tr>
-          <tr>
-            <td>Commercialization Timeline and Gap Analysis</td>
-            <td>S</td>
-            <td>P</td>
-            <td>S</td>
-            <td></td>
-            <td>S</td>
-            <td>P</td>
-          </tr>
-          <tr>
-            <td>Integrated Gap Analysis and Learning Goals</td>
-            <td>P</td>
-            <td>P</td>
-            <td>P</td>
-            <td>S</td>
-            <td>S</td>
-            <td>P</td>
-          </tr>
-          <tr>
-            <td>FFMI Medical Device Learning Templates</td>
-            <td>P</td>
-            <td>P</td>
-            <td>S</td>
-            <td>S</td>
-            <td>S</td>
-            <td>S</td>
-          </tr>
-          <tr>
-            <td>Commercial Learning Tasks for Medical Device Innovation</td>
-            <td>P</td>
-            <td>P</td>
-            <td>S</td>
-            <td></td>
-            <td>S</td>
-            <td>S</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="context-grid competency-card-grid" style="margin-top: 1.4rem;">
-      <article class="card">
-        <h3>Applying Learning Theories and Design Frameworks</h3>
-        <p>
-          This competency first became visible in my course review work, where I examined whether learning outcomes, activities, and assessments were aligned and whether learners had enough scaffolding to complete expected work. Over time, I moved beyond identifying weak alignment and began defining learning goals, learner performances, and more intentional supports across later artifacts.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Creating Design Resources and Project Documentation</h3>
-        <p>
-          What began as review notes, checklists, and visual mappings gradually became a more deliberate part of my design practice. I learned that documentation does not only record decisions. It can also clarify thinking, surface gaps, support stakeholder communication, and become a bridge from analysis into design.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Fostering Workplace Skills and Professional Relationships</h3>
-        <p>
-          Because my residency was fully remote, collaboration depended on clear written communication, follow-up notes, revision cycles, and the ability to keep work moving between meetings. I became more intentional about making communication actionable and about treating feedback as part of the design process rather than as an administrative add-on.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Integrating Inclusive Design Principles and Practices</h3>
-        <p>
-          My understanding of inclusive design became much more practical through course review. Instead of thinking about accessibility only as compliance, I began using UDL and learner variability as review lenses, especially when documenting text-heavy lessons, unclear prompts, missing alternate supports, and places where the learner path could be made easier to follow.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Using Knowledge of Technology Affordances and Constraints</h3>
-        <p>
-          This competency appeared more broadly in my work than a simple checkbox suggests. Canvas was not just the platform where the course lived. Its navigation flow, media behavior, linked tools, and learner-facing structure shaped the experience itself. I also became more critical about how technologies such as generative AI can support early-stage research and idea organization while still requiring verification and judgment.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Using Research and Evaluation Skills</h3>
-        <p>
-          I grew from using outside sources to supplement my understanding into using them to justify design direction. External timelines, FDA materials, and commercialization references became tools for identifying what was missing, clarifying course phases, and making more evidence-informed recommendations about what learners should know, do, and be prepared for.
-        </p>
-      </article>
-    </div>
-  </div>
-</section>
 
     <section id="reflection">
       <div class="container">
         <div class="section-header">
           <h2>Final reflection</h2>
           <p>
-            Looking across these artifacts, my residency growth has felt cumulative rather than fragmented. What began as course review and feedback gradually developed into a broader design process shaped by analysis, collaboration, and resource creation.
+            Looking across these artifacts, I now understand my residency less as a set of separate tasks and more as a connected design trajectory. What began as reviewing course materials and noticing learner-facing problems gradually developed into a more layered form of practice: analyzing structure, comparing content against external references, collaborating to define instructional priorities, and designing tools that could better support learner performance. This progression helped me see that learning experience design is not only about producing polished materials. It is also about shaping the conditions under which learning becomes clearer, more actionable, and more meaningful.
           </p>
         </div>
+
         <div class="reflection-grid">
           <article class="card">
             <h3>How my design thinking evolved</h3>
@@ -1076,8 +1116,9 @@
               Early in the residency, I often approached design work by looking for visible problems: where learning goals and activities did not align, where scaffolding was thin, or where the learner path felt confusing. Over time, my thinking became more layered. I began asking not only what was missing, but what learners were actually being asked to understand, produce, justify, or decide. That shift moved me from a surface-level review mindset into a stronger design mindset. Concepts such as alignment, scaffolding, learner support, and representational access became more than course ideas to reference; they became practical lenses I used to evaluate real instructional materials in Canvas and to make decisions about what kinds of supports would meaningfully improve the experience. In that sense, this residency helped me move from recognizing design principles in theory to using them as working tools in practice.
             </p>
           </article>
+
           <article class="card">
-            <h3>What I now understand more clearly</h3>
+            <h3>What this residency changed in how I understand LXD</h3>
             <p>
               I also understand the LXD core competencies more concretely now because I experienced how they overlap in practice. Applying learning theories and design frameworks shaped how I interpreted alignment and learner support. Research and evaluation skills became important when I compared course content against external timelines, regulatory references, and development processes. Documentation and design resources emerged when gaps were translated into structured tools, templates, and task supports. Workplace skills were not separate from design work either; they were visible in feedback conversations, revision cycles, collaborative synthesis, and shared decision-making. Most importantly, I now see that learning experience design is not limited to building final products. It includes reviewing, clarifying, sequencing, structuring, and making learner thinking visible. Even when working outside my original domain knowledge, I can still contribute meaningfully by asking what learners need, what the environment currently affords, and how design can reduce unnecessary ambiguity while deepening engagement.
             </p>
@@ -1086,11 +1127,12 @@
       </div>
     </section>
   </main>
-    <footer class="footer footer-minimal">
-      <div class="container">
+
+  <footer class="footer footer-minimal">
+    <div class="container">
       <div class="footer-rule"></div>
     </div>
-    </footer>
+  </footer>
 
   <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
@@ -1123,6 +1165,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    activateLink();
+  </script>
+</body>
+</html>
     activateLink();
   </script>
 </body>
