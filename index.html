@@ -427,6 +427,14 @@
       font-size: 0.85rem;
     }
 
+    .artifact-preview > img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid rgba(216, 214, 208, 0.95);
+      background: #ffffff;
+    }
+
     .artifact-preview-dual {
       display: flex;
       flex-direction: column;
@@ -446,22 +454,6 @@
       background: #ffffff;
     }
 
-    .preview-placeholder-card {
-      width: 100%;
-      min-height: 150px;
-      border-radius: 14px;
-      border: 1px solid rgba(216, 214, 208, 0.95);
-      background: rgba(255, 255, 255, 0.72);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.25rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
     .callout {
       padding: 1rem 1.1rem;
       border-radius: 16px;
@@ -476,6 +468,16 @@
 
     .callout p {
       color: var(--muted);
+    }
+
+    .additional-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .additional-grid .card:first-child {
+      grid-column: 1 / -1;
     }
 
     .competency-table-wrap {
@@ -523,6 +525,15 @@
       grid-template-columns: 1fr 1fr;
     }
 
+    .reflection-grid-three {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .reflection-grid-three .card:last-child {
+      grid-column: 1 / -1;
+    }
+
     .footer {
       padding: 2.5rem 0 3.5rem;
     }
@@ -568,8 +579,15 @@
       .artifact-grid,
       .reflection-grid,
       .competency-growth-grid,
-      .competency-card-grid {
+      .competency-card-grid,
+      .additional-grid,
+      .reflection-grid-three {
         grid-template-columns: 1fr;
+      }
+
+      .additional-grid .card:first-child,
+      .reflection-grid-three .card:last-child {
+        grid-column: auto;
       }
 
       .hero-meta {
@@ -601,10 +619,6 @@
       .artifact-preview {
         min-height: 220px;
       }
-
-      .preview-placeholder-card {
-        min-height: 120px;
-      }
     }
   </style>
 </head>
@@ -619,6 +633,7 @@
         <a href="#home">Home</a>
         <a href="#context">Context</a>
         <a href="#artifacts">Artifacts</a>
+        <a href="#additional">Additional Work</a>
         <a href="#competencies">Competencies</a>
         <a href="#reflection">Reflection</a>
       </nav>
@@ -687,24 +702,24 @@
     <section id="context">
       <div class="container">
         <div class="section-header">
-          <h2>Residency context</h2>
+          <h2>Project context</h2>
           <p>
-            My residency took place at Fast Forward Medical Innovation (FFMI), where I supported projects related to online commercialization education. Much of my work centered on fastPACE-related course materials and gradually moved from reviewing existing learning experiences to building learner-facing supports and design resources in Canvas.
+            My residency took place at Fast Forward Medical Innovation (FFMI), where I contributed to course-related work connected to fastPACE, a Canvas-based commercialization learning environment. The project sat at the intersection of medical innovation, entrepreneurship, and online learning design, which meant that the instructional questions were closely tied to highly specialized content.
           </p>
         </div>
 
         <div class="context-grid">
           <article class="card">
-            <h3>What I worked on</h3>
+            <h3>What this project was about</h3>
             <p>
-              My residency followed a full cycle from review to design. I began by examining existing FFMI course materials, identifying gaps in structure, alignment, and learner support, and conducting external research to better understand the commercialization content behind the courses. As the work developed, my role moved beyond analysis into design. I contributed to templates, learner-facing tools, and course support materials, and I began thinking more directly about how Canvas could be used to reorganize content, add missing supports, and strengthen the learner experience. This portfolio documents that progression through a selected set of representative artifacts.
+              The central focus of my residency was not to create a course from scratch, but to work with an existing learning environment and help make it clearer and more supportive for learners. This included reviewing course structure, identifying gaps in learner support, comparing course content against outside resources, and later contributing to templates and learner-facing tools that could make the course more usable.
             </p>
           </article>
 
           <article class="card">
-            <h3>How this work strengthened my LXD competencies</h3>
+            <h3>Why this context mattered for my growth</h3>
             <p>
-              Through this residency, I came to see design more clearly as a process of translation. Review work showed me where a course felt unclear, incomplete, or difficult to act on, but design work required me to respond to those gaps in more concrete ways. By moving into templates, learner-facing tools, and Canvas-based course support, I strengthened my ability to connect analysis with action. This experience helped me grow not only in reviewing learning environments, but also in designing structures that make complex content more usable, more navigable, and more instructionally coherent for learners.
+              This project pushed me to work in a content area that was unfamiliar to me. Because the course dealt with medical device commercialization, regulation, evidence, and market strategy, I could not rely only on general design instincts. I had to learn how to research specialized content carefully, interpret what might be difficult for learners, and think about how instructional design could make that complexity more manageable.
             </p>
           </article>
         </div>
@@ -1006,7 +1021,8 @@
                   <div class="artifact-block">
                     <strong>What I learned</strong>
                     <p>
-                      This artifact helped me understand more clearly that strong learning design in professional education is often about reframing the sequence of thinking. In this case, the key issue was not just adding more information, but helping learners ask better questions earlier. 
+                      This artifact helped me understand more clearly that strong learning design in professional education is often about reframing the sequence of thinking. In this case, the key issue was not just adding more information, but helping learners ask better questions earlier.
+                    </p>
                   </div>
                 </div>
 
@@ -1017,11 +1033,10 @@
                 </div>
               </div>
 
-  
-                <div class="artifact-media">
-                  <div class="artifact-preview">
+              <div class="artifact-media">
+                <div class="artifact-preview">
                   <img src="artifact6-template-overview.png" alt="Screenshot of the new regulatory affairs section added to the FFMI medical device commercialization materials.">
-                  </div>
+                </div>
 
                 <div class="callout">
                   <strong>Key takeaway</strong>
@@ -1086,10 +1101,10 @@
                 </div>
               </div>
 
-            <div class="artifact-media">
-                  <div class="artifact-preview">
-                  <img src="artifact7-sandbox-part.png" alt="Screenshot of the new regulatory affairs section added to the FFMI medical device commercialization materials.">
-                  </div>
+              <div class="artifact-media">
+                <div class="artifact-preview">
+                  <img src="artifact7-sandbox-part.png" alt="Screenshot of the Canvas sandbox revision in progress.">
+                </div>
 
                 <div class="callout">
                   <strong>Key takeaway</strong>
@@ -1098,6 +1113,50 @@
                   </p>
                 </div>
               </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="additional">
+      <div class="container">
+        <div class="section-header">
+          <h2>Additional work</h2>
+          <p>
+            In addition to my residency artifacts, EDUC 616 helped me build a broader understanding of LXD through seminars, structured practice, and smaller design assignments. These experiences gave me more familiarity with the everyday tools, routines, and ways of thinking that support LXD work.
+          </p>
+        </div>
+
+        <div class="additional-grid">
+          <article class="card">
+            <h3>How EDUC 616 supported my competency growth</h3>
+            <p>
+              EDUC 616 helped me connect theory, design practice, and residency work more intentionally. Seminar discussions, learner persona activities, and other small group design exercises gave me repeated chances to work with ideas such as empathy, learner-centered thinking, and instructional decision-making in a more concrete way. These experiences made the six LXD competencies feel less abstract and helped me understand how they show up in actual design work.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Skill Building Mini Project #1 · Figma</h3>
+            <p>
+              My first skill-building mini project focused on Figma. This experience helped me become more comfortable with an LXD-facing design tool and think more concretely about prototyping, visual communication, and how design tools support everyday LXD practice.
+            </p>
+            <div class="artifact-actions">
+              <a class="btn btn-secondary" href="https://docs.google.com/document/d/132WIPudTBmSrn3ACmbwY1ToyexjU1LX1zwQnUptCH0o/preview" target="_blank" rel="noopener noreferrer">
+                View Mini Project #1
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Skill Building Mini Project #2 · Notion</h3>
+            <p>
+              My second mini project focused on Notion. This project helped me think more carefully about learner-facing technology and how tools can support organization, reflection, and more personalized learning routines from the learner’s perspective.
+            </p>
+            <div class="artifact-actions">
+              <a class="btn btn-secondary" href="https://docs.google.com/document/d/1_SKFK5e3sdg22R62qUyt9WeQwy4gfaJeRukX84cN1BM/preview" target="_blank" rel="noopener noreferrer">
+                View Mini Project #2
+              </a>
             </div>
           </article>
         </div>
@@ -1114,10 +1173,10 @@
         </div>
 
         <div class="artifact-actions" style="margin-bottom: 1.25rem;">
-          <a class="btn btn-primary" href="competency-poster.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-primary" href="https://docs.google.com/presentation/d/1khgS7rWVyd37GuF6zSDcKC5kBa1fMLV9ZOMdC4_jxgY/preview" target="_blank" rel="noopener noreferrer">
             View competency poster
           </a>
-          <a class="btn btn-secondary" href="competency-planning.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-secondary" href="https://docs.google.com/document/d/1Lf_kAn_q_3l3TEekhJ-HBBA0Z8h_Kn5gk8B201oGWuE/preview" target="_blank" rel="noopener noreferrer">
             View competency planning document
           </a>
         </div>
@@ -1280,22 +1339,29 @@
         <div class="section-header">
           <h2>Final reflection</h2>
           <p>
-            Looking across these artifacts, I now understand my residency less as a set of separate tasks and more as a connected design trajectory. What began as reviewing course materials and noticing learner-facing problems gradually developed into a more layered form of practice: analyzing structure, comparing content against external references, collaborating to define instructional priorities, and designing tools that could better support learner performance. This progression helped me see that learning experience design is not only about producing polished materials. It is also about shaping the conditions under which learning becomes clearer, more actionable, and more meaningful.
+            Looking across these artifacts, I no longer see my residency as a series of separate tasks. It feels more like one line of work that gradually became clearer to me over time. At the beginning, I was mostly reviewing course materials and noticing where things felt thin, confusing, or under-supported. Later, I began comparing the course against outside resources, discussing gaps with others, and helping build tools that could actually support learners. What changed most for me was not only what I produced, but how I understood design work itself.
           </p>
         </div>
 
-        <div class="reflection-grid">
+        <div class="reflection-grid reflection-grid-three">
           <article class="card">
             <h3>How my design thinking evolved</h3>
             <p>
-              Early in the residency, I often approached design work by looking for visible problems: where learning goals and activities did not align, where scaffolding was thin, or where the learner path felt confusing. Over time, my thinking became more layered. I began asking not only what was missing, but what learners were actually being asked to understand, produce, justify, or decide. That shift moved me from a surface-level review mindset into a stronger design mindset. Concepts such as alignment, scaffolding, learner support, and representational access became more than course ideas to reference; they became practical lenses I used to evaluate real instructional materials in Canvas and to make decisions about what kinds of supports would meaningfully improve the experience. In that sense, this residency helped me move from recognizing design principles in theory to using them as working tools in practice.
+              One thing that changed for me was how I understood design frameworks in practice. When I was taking EDUC 616, I often thought about frameworks like ADDIE as something you would clearly name and apply at the start of a project. I expected the process to feel more explicit. During the residency, though, it did not happen that way. We were not constantly naming a framework, but through repeated review, discussion, revision, and redesign, we were still working through the same design logic. That helped me understand design theory in a less rigid way. It is not always something you announce first and then follow step by step. Sometimes it appears through the actual rhythm of project work.
             </p>
           </article>
 
           <article class="card">
             <h3>What this residency changed in how I understand LXD</h3>
             <p>
-              I also understand the LXD core competencies more concretely now because I experienced how they overlap in practice. Applying learning theories and design frameworks shaped how I interpreted alignment and learner support. Research and evaluation skills became important when I compared course content against external timelines, regulatory references, and development processes. Documentation and design resources emerged when gaps were translated into structured tools, templates, and task supports. Workplace skills were not separate from design work either; they were visible in feedback conversations, revision cycles, collaborative synthesis, and shared decision-making. Most importantly, I now see that learning experience design is not limited to building final products. It includes reviewing, clarifying, sequencing, structuring, and making learner thinking visible. Even when working outside my original domain knowledge, I can still contribute meaningfully by asking what learners need, what the environment currently affords, and how design can reduce unnecessary ambiguity while deepening engagement.
+              Before this residency, I underestimated the role of research and evaluation in LXD work. Part of me assumed that when content became too specialized, that deeper knowledge would mainly be handled by subject matter experts. But when I started working with medical commercialization education, which was far outside my own background, I realized how much LXD depends on the ability to research unfamiliar content carefully, compare sources, and make informed judgments about what learners may or may not understand. That shift mattered a lot for me. It made me see that research is not just something added around design. In some contexts, it is what makes design possible at all.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>What still feels limited in my practice</h3>
+            <p>
+              Integrating inclusive design is probably the area where I still feel the most unfinished. In my review work, I did draw on ideas like UDL, especially when thinking about whether learners had multiple ways to engage with content or express their understanding. But in practice, this part of the work remained limited. Accessibility was not a central focus of the project, and we did not spend much time thinking in depth about learners with more specific needs, such as reading-related barriers or other forms of disability support. That made me realize that my current understanding of inclusive design is still partial. If I have the chance, I would like to look more closely at courses or learning experiences that are intentionally designed for learners with specific needs, because I think that would deepen both my perspective and my practice.
             </p>
           </article>
         </div>
